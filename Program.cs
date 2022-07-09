@@ -25,11 +25,11 @@ namespace ConsoleApp1
                 Console.WriteLine("Server IP:");
                 string ip = Console.ReadLine();
                 Console.WriteLine("Server Port:");
-                int port = Convert.ToInt32(Console.ReadLine());
+                string port = Console.ReadLine();
                 Console.WriteLine("Username:");
                 string username = Console.ReadLine();
                 Console.WriteLine("User ID:");
-                int userid = Convert.ToInt32(Console.ReadLine());
+                string userid = Console.ReadLine();
                 Console.WriteLine("Membership: (None BuildersClub TurboBuildersClub OutrageousBuildersClub)");
                 string membership = Console.ReadLine();
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
@@ -48,7 +48,7 @@ namespace ConsoleApp1
             {
                 Console.Clear();
                 Console.WriteLine("Server Port:");
-                int port = Convert.ToInt32(Console.ReadLine());
+                string port = Console.ReadLine();
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
