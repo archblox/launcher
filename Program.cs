@@ -52,10 +52,12 @@ namespace ConsoleApp1
                 Console.Clear();
                 Console.WriteLine("Server Port:");
                 string port = Console.ReadLine();
+                Console.WriteLine("Game Filename (use temp.rbxl if unsure, put .rbxl(s) in the content folder):");
+                string filename = Console.ReadLine();
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
-                    pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/gameserver.php?port=" + port + "\" -t \"1\"";
+                    pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/gameserver.php?port=" + port + "?rbxl=" + filename + "\" -t \"1\"";
                     pProcess.StartInfo.UseShellExecute = false;
                     pProcess.StartInfo.RedirectStandardOutput = true;
                     pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
