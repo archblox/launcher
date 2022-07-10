@@ -15,7 +15,6 @@ namespace ConsoleApp1
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
             string clientPath = Path.Combine(folderPath, version_string + @"\");
             string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
-            
             Console.Clear();
             Console.WriteLine("ARCHBLOX Launcher");
             Console.WriteLine("Type 1 to Join a Game");
