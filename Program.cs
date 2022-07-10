@@ -15,6 +15,7 @@ namespace ConsoleApp1
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
             string clientPath = Path.Combine(folderPath, version_string + @"\");
             string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
+            
             Console.Clear();
             Console.WriteLine("ARCHBLOX Launcher");
             Console.WriteLine("Type 1 to Join a Game");
@@ -34,7 +35,6 @@ namespace ConsoleApp1
                 // Console.WriteLine("Membership: (None BuildersClub TurboBuildersClub OutrageousBuildersClub)");
                 // string membership = Console.ReadLine();
                 string membership = "None";
-                Console.WriteLine("Joining game server on " + ip + ":" + port + " as " + username + "(id: " + userid + ")");
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
@@ -44,15 +44,15 @@ namespace ConsoleApp1
                     pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
                     pProcess.StartInfo.CreateNoWindow = false;
                     pProcess.Start();
+                    Console.WriteLine("Joining game server on " + ip + ":" + port + " as " + username + "(id: " + userid + ")");
                     Main();
                 }
             }
             else if (number == "2")
             {
                 Console.Clear();
-                Console.WriteLine("Server Port (53640 is recommended):");
+                Console.WriteLine("Server Port:");
                 string port = Console.ReadLine();
-                Console.WriteLine("Launced game server on port " + port + ". You will have to port-forward that port or use tools such as Hamachi or RAdminVPN to let other users join the game.");
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
@@ -62,6 +62,7 @@ namespace ConsoleApp1
                     pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
                     pProcess.StartInfo.CreateNoWindow = false;
                     pProcess.Start();
+                    Console.WriteLine("Launced game server on port " + port + ". You will have to port-forward that port or use tools such as Hamachi or RAdminVPN to let other users join the game.");
                     Main();
                 }
             } else
