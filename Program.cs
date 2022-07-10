@@ -9,20 +9,21 @@ namespace ConsoleApp1
         private static WebClient wc = new WebClient();
         static void Main()
         {
-            Console.Clear();
             byte[] raw = wc.DownloadData("https://archblox.com/client/version.txt");
             string webData = Encoding.UTF8.GetString(raw);
             string version_string = webData;
-            string folderPath = Path.Combine(@"C:\ARCHBLOX\", version_string + @"\");
-            string filePath = Path.Combine(folderPath, "ArchbloxPlayerBeta.exe");
-            Console.WriteLine("ARCHBLOX");
-            Console.WriteLine("1) Join a Game");
-            Console.WriteLine("2) Host a Game");
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
+            string clientPath = Path.Combine(folderPath, version_string + @"\");
+            string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
+            Console.Clear();
+            Console.WriteLine("ARCHBLOX Launcher");
+            Console.WriteLine("Type 1 to Join a Game");
+            Console.WriteLine("Type 2 to Host a Game");
             string number = Console.ReadLine();
             if (number == "1")
             {
                 Console.Clear();
-                Console.WriteLine("Server IP:");
+                Console.WriteLine("Server IP (Type \"localhost\" if joining your own server)");
                 string ip = Console.ReadLine();
                 Console.WriteLine("Server Port:");
                 string port = Console.ReadLine();
@@ -30,8 +31,10 @@ namespace ConsoleApp1
                 string username = Console.ReadLine();
                 Console.WriteLine("User ID:");
                 string userid = Console.ReadLine();
-                Console.WriteLine("Membership: (None BuildersClub TurboBuildersClub OutrageousBuildersClub)");
-                string membership = Console.ReadLine();
+                // Console.WriteLine("Membership: (None BuildersClub TurboBuildersClub OutrageousBuildersClub)");
+                // string membership = Console.ReadLine();
+                string membership = "None";
+                Console.WriteLine("Joining game server on " + ip + ":" + port + " as " + username + "(id: " + userid + ")");
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
@@ -47,8 +50,9 @@ namespace ConsoleApp1
             else if (number == "2")
             {
                 Console.Clear();
-                Console.WriteLine("Server Port:");
+                Console.WriteLine("Server Port (53640 is recommended):");
                 string port = Console.ReadLine();
+                Console.WriteLine("Launced game server on port " + port + ". You will have to port-forward that port or use tools such as Hamachi or RAdminVPN to let other users join the game.");
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
@@ -62,6 +66,7 @@ namespace ConsoleApp1
                 }
             } else
             {
+                Console.WriteLine(number + " is not a correct input!");
                 Main();
             }
         }
