@@ -15,10 +15,11 @@ namespace ConsoleApp1
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
             string clientPath = Path.Combine(folderPath, version_string + @"\");
             string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Clear();
-            Console.WriteLine("ARCHBLOX Launcher");
-            Console.WriteLine("Type 1 to Join a Game");
-            Console.WriteLine("Type 2 to Host a Game");
+            Console.WriteLine(" █████  ██████   ██████ ██   ██ ██████  ██       ██████  ██   ██ \n██   ██ ██   ██ ██      ██   ██ ██   ██ ██      ██    ██  ██ ██  \n███████ ██████  ██      ███████ ██████  ██      ██    ██   ███   \n██   ██ ██   ██ ██      ██   ██ ██   ██ ██      ██    ██  ██ ██  \n██   ██ ██   ██  ██████ ██   ██ ██████  ███████  ██████  ██   ██");
+            Console.WriteLine("Type 1 to Join a Game or Type 2 to Host a Game");
             string number = Console.ReadLine();
             if (number == "1")
             {
@@ -50,14 +51,14 @@ namespace ConsoleApp1
             else if (number == "2")
             {
                 Console.Clear();
-                Console.WriteLine("Server Port:");
+                Console.WriteLine("Server Port (Default is 53640):");
                 string port = Console.ReadLine();
-                Console.WriteLine("Game Filename (use temp.rbxl if unsure, put .rbxl(s) in the content folder):");
+                Console.WriteLine("RBXL Filename (use temp.rbxl if unsure, put .rbxl(s) in the content folder):");
                 string filename = Console.ReadLine();
                 using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
                 {
                     pProcess.StartInfo.FileName = filePath;
-                    pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/gameserver.php?port=" + port + "?rbxl=" + filename + "\" -t \"1\"";
+                    pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/gameserver.php?port=" + port + "&rbxl=" + filename + "\" -t \"1\"";
                     pProcess.StartInfo.UseShellExecute = false;
                     pProcess.StartInfo.RedirectStandardOutput = true;
                     pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
