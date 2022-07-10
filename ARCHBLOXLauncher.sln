@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARCHBLOXLauncher", "ARCHBLOXLauncher.csproj", "{1ABADBCC-4FC4-4496-8FDF-9A60DF745D2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARCHBLOXLauncher1", "..\ARCHBLOXLauncher1\ARCHBLOXLauncher1.csproj", "{2894C0B1-1CA4-4B3B-BC5D-AB52479F129F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARCHBLOXLauncher1", "..\ARCHBLOXLauncher1\ARCHBLOXLauncher1.csproj", "{2894C0B1-1CA4-4B3B-BC5D-AB52479F129F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
