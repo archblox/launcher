@@ -16,6 +16,7 @@ namespace ARCHBLOXLauncher1
 {
     public partial class Form1 : Form
     {
+        bool lockanims = true;
         private DiscordRpcClient client;
         bool ingame = false;
         bool hosting = false;
@@ -27,13 +28,134 @@ namespace ARCHBLOXLauncher1
         static string clientPath = Path.Combine(folderPath, version_string + @"\");
         static string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
 
+        void slideOutJoinBox(object sender, EventArgs e)
+        {
+            int x = JoinBox.Location.X;
+            JoinBox.Location = new Point(x + 10, JoinBox.Location.Y);
+
+            if (x > 358)
+            {
+                AnimationHandler_SlideOutJoinBox.Stop();
+            }
+        }
+        void slideInJoinBox(object sender, EventArgs e)
+        {
+            int x = JoinBox.Location.X;
+            JoinBox.Location = new Point(x - 10, JoinBox.Location.Y);
+
+            if (x < 30)
+            {
+                AnimationHandler_SlideInJoinBox.Stop();
+            }
+        }
+        void slideOutHostBox(object sender, EventArgs e)
+        {
+            int x = HostBox.Location.X;
+            HostBox.Location = new Point(x + 10, HostBox.Location.Y);
+
+            if (x > 358)
+            {
+                AnimationHandler_SlideOutHostBox.Stop();
+            }
+        }
+        void slideInHostBox(object sender, EventArgs e)
+        {
+            int x = HostBox.Location.X;
+            HostBox.Location = new Point(x - 10, HostBox.Location.Y);
+            if (x < 30)
+            {
+                AnimationHandler_SlideInHostBox.Stop();
+            }
+        }
+        void slideOutBackBTNJoin(object sender, EventArgs e)
+        {
+            int y = BackBTN_Join.Location.Y;
+            BackBTN_Join.Location = new Point(BackBTN_Join.Location.X, y - 8);
+
+            if (y < -25)
+            {
+                AnimationHandler_SlideOutBackBTNJoin.Stop();
+            }
+        }
+        void slideInBackBTNJoin(object sender, EventArgs e)
+        {
+            int y = BackBTN_Join.Location.Y;
+            BackBTN_Join.Location = new Point(BackBTN_Join.Location.X, y + 8);
+
+            if (y > 10)
+            {
+                AnimationHandler_SlideInBackBTNJoin.Stop();
+            }
+        }
+        void slideOutBackBTNHost(object sender, EventArgs e)
+        {
+            int y = BackBTN_Host.Location.Y;
+            BackBTN_Host.Location = new Point(BackBTN_Host.Location.X, y - 8);
+
+            if (y < -25)
+            {
+                AnimationHandler_SlideOutBackBTNHost.Stop();
+            }
+        }
+        void slideInBackBTNHost(object sender, EventArgs e)
+        {
+            int y = BackBTN_Host.Location.Y;
+            BackBTN_Host.Location = new Point(BackBTN_Host.Location.X, y + 8);
+
+            if (y > 10)
+            {
+                AnimationHandler_SlideInBackBTNHost.Stop();
+            }
+        }
+        void slideInButtons(object sender, EventArgs e)
+        {
+            lockanims = true;
+            UpdateBTN.Location = new Point(UpdateBTN.Location.X + 8, UpdateBTN.Location.Y);
+            JoinBTN.Location = new Point(UpdateBTN.Location.X, JoinBTN.Location.Y);
+            HostBTN.Location = new Point(UpdateBTN.Location.X, HostBTN.Location.Y);
+            if (UpdateBTN.Location.X > 10)
+            {
+                AnimationHandler_SlideInButtons.Stop();
+                lockanims = false;
+            }
+        }
+        void slideOutButtons(object sender, EventArgs e)
+        {
+            lockanims = true;
+            UpdateBTN.Location = new Point(UpdateBTN.Location.X - 8, UpdateBTN.Location.Y);
+            JoinBTN.Location = new Point(UpdateBTN.Location.X, JoinBTN.Location.Y);
+            HostBTN.Location = new Point(UpdateBTN.Location.X, HostBTN.Location.Y);
+            if (UpdateBTN.Location.X < -278)
+            {
+                lockanims = false;
+                AnimationHandler_SlideOutButtons.Stop();
+            }
+        }
         public Form1()
         {
             InitializeComponent();
+
+            AnimationHandler_SlideOutHostBox.Tick += new EventHandler(slideOutHostBox);
+            AnimationHandler_SlideInHostBox.Tick += new EventHandler(slideInHostBox);
+
+            AnimationHandler_SlideOutJoinBox.Tick += new EventHandler(slideOutJoinBox);
+            AnimationHandler_SlideInJoinBox.Tick += new EventHandler(slideInJoinBox);
+
+            AnimationHandler_SlideOutBackBTNHost.Tick += new EventHandler(slideOutBackBTNHost);
+            AnimationHandler_SlideInBackBTNHost.Tick += new EventHandler(slideInBackBTNHost);
+
+            AnimationHandler_SlideOutBackBTNJoin.Tick += new EventHandler(slideOutBackBTNJoin);
+            AnimationHandler_SlideInBackBTNJoin.Tick += new EventHandler(slideInBackBTNJoin);
+
+            AnimationHandler_SlideOutButtons.Tick += new EventHandler(slideOutButtons);
+            AnimationHandler_SlideInButtons.Tick += new EventHandler(slideInButtons);
+
+            AnimationHandler_SlideInButtons.Start();
+
             client = new DiscordRpcClient("996030605106090006");
             client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
             client.Initialize();
-            client.SetPresence(new DiscordRPC.RichPresence()
+            client.SetPresence(new RichPresence()
             {
                 Details = "Launcher",
                 State = "Browsing through the menus...",
@@ -215,6 +337,56 @@ namespace ARCHBLOXLauncher1
         {
             ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
             form2.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JoinBTN_Click(object sender, EventArgs e)
+        {
+            if (lockanims == false)
+            {
+                AnimationHandler_SlideOutButtons.Start();
+                AnimationHandler_SlideInJoinBox.Start();
+                AnimationHandler_SlideInBackBTNJoin.Start();
+            }
+        }
+
+        private void UpdateBTN_Click(object sender, EventArgs e)
+        {
+            ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+            form2.Show();
+        }
+
+        private void BackBTN_Join_Click(object sender, EventArgs e)
+        {
+            if (lockanims == false) {
+                AnimationHandler_SlideInButtons.Start();
+                AnimationHandler_SlideOutJoinBox.Start();
+                AnimationHandler_SlideOutBackBTNJoin.Start();
+            }
+        }
+
+        private void BackBTN_Host_Click(object sender, EventArgs e)
+        {
+            if (lockanims == false)
+            {
+                AnimationHandler_SlideInButtons.Start();
+                AnimationHandler_SlideOutHostBox.Start();
+                AnimationHandler_SlideOutBackBTNHost.Start();
+            }
+        }
+
+        private void HostBTN_Click(object sender, EventArgs e)
+        {
+            if (lockanims == false)
+            {
+                AnimationHandler_SlideOutButtons.Start();
+                AnimationHandler_SlideInHostBox.Start();
+                AnimationHandler_SlideInBackBTNHost.Start();
+            }
         }
     }
 }
