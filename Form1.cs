@@ -168,7 +168,7 @@ namespace ARCHBLOXLauncher1
             });
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (!File.Exists(filePath))
             {
@@ -239,7 +239,7 @@ namespace ARCHBLOXLauncher1
             }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (!File.Exists(filePath))
             {
@@ -310,7 +310,7 @@ namespace ARCHBLOXLauncher1
             }
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Choose a RBXL...";
