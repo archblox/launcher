@@ -30,40 +30,48 @@ namespace ARCHBLOXLauncher1
 
         void slideOutJoinBox(object sender, EventArgs e)
         {
+            lockanims = true;
             int x = JoinBox.Location.X;
             JoinBox.Location = new Point(x + 10, JoinBox.Location.Y);
 
             if (x > 358)
             {
+                lockanims = false;
                 AnimationHandler_SlideOutJoinBox.Stop();
             }
         }
         void slideInJoinBox(object sender, EventArgs e)
         {
+            lockanims = true;
             int x = JoinBox.Location.X;
             JoinBox.Location = new Point(x - 10, JoinBox.Location.Y);
 
             if (x < 30)
             {
+                lockanims = false;
                 AnimationHandler_SlideInJoinBox.Stop();
             }
         }
         void slideOutHostBox(object sender, EventArgs e)
         {
+            lockanims = true;
             int x = HostBox.Location.X;
             HostBox.Location = new Point(x + 10, HostBox.Location.Y);
 
             if (x > 358)
             {
+                lockanims = false;
                 AnimationHandler_SlideOutHostBox.Stop();
             }
         }
         void slideInHostBox(object sender, EventArgs e)
         {
+            lockanims = true;
             int x = HostBox.Location.X;
             HostBox.Location = new Point(x - 10, HostBox.Location.Y);
             if (x < 30)
             {
+                lockanims = false;
                 AnimationHandler_SlideInHostBox.Stop();
             }
         }
