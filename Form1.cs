@@ -295,7 +295,7 @@ namespace ARCHBLOXLauncher1
                 var pProcess = new Process();
                 ingame = true;
                 pProcess.StartInfo.FileName = filePath;
-                pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/join.php?port=" + serverport.Text + "&app=" + userid.Text + "&ip=" + serverip.Text + "&username=" + username.Text + "&id=" + userid.Text + "&membership=None\" -t \"1\"";
+                pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/join.ashx?port=" + serverport.Text + "&ip=" + serverip.Text + "\" -t \"1\"";
                 pProcess.StartInfo.UseShellExecute = false;
                 pProcess.StartInfo.RedirectStandardOutput = true;
                 pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
@@ -314,7 +314,7 @@ namespace ARCHBLOXLauncher1
                         SmallImageKey = "archblox",
                     }
                 }); ;
-                MessageBox.Show("Joining IP " + serverip.Text + ":" + serverport.Text + " as " + username.Text + " (id: " + userid.Text + ")", "ARCHBLOX");
+                MessageBox.Show("Joining " + serverip.Text + ":" + serverport.Text, "ARCHBLOX");
             }
         }
 

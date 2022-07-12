@@ -37,11 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.serverport = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.userid = new System.Windows.Forms.TextBox();
-            this.username = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.HostBox = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -91,14 +87,10 @@
             this.JoinBox.Controls.Add(this.label4);
             this.JoinBox.Controls.Add(this.serverport);
             this.JoinBox.Controls.Add(this.label7);
-            this.JoinBox.Controls.Add(this.label5);
-            this.JoinBox.Controls.Add(this.userid);
-            this.JoinBox.Controls.Add(this.username);
             this.JoinBox.Controls.Add(this.button2);
-            this.JoinBox.Controls.Add(this.label6);
-            this.JoinBox.Location = new System.Drawing.Point(400, 49);
+            this.JoinBox.Location = new System.Drawing.Point(400, 58);
             this.JoinBox.Name = "JoinBox";
-            this.JoinBox.Size = new System.Drawing.Size(286, 192);
+            this.JoinBox.Size = new System.Drawing.Size(286, 150);
             this.JoinBox.TabIndex = 26;
             this.JoinBox.TabStop = false;
             // 
@@ -143,37 +135,6 @@
             this.label7.TabIndex = 25;
             this.label7.Text = "Server Port";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(6, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 15);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Username";
-            // 
-            // userid
-            // 
-            this.userid.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.userid.Location = new System.Drawing.Point(200, 131);
-            this.userid.MaxLength = 8;
-            this.userid.Name = "userid";
-            this.userid.PlaceholderText = "UserID";
-            this.userid.Size = new System.Drawing.Size(80, 23);
-            this.userid.TabIndex = 22;
-            this.userid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // username
-            // 
-            this.username.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.username.Location = new System.Drawing.Point(6, 131);
-            this.username.MaxLength = 20;
-            this.username.Name = "username";
-            this.username.PlaceholderText = "Username";
-            this.username.Size = new System.Drawing.Size(188, 23);
-            this.username.TabIndex = 21;
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -181,23 +142,13 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(6, 160);
+            this.button2.Location = new System.Drawing.Point(6, 117);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(274, 23);
             this.button2.TabIndex = 24;
             this.button2.Text = "Join";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(241, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 15);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "UserID";
             // 
             // HostBox
             // 
@@ -208,7 +159,7 @@
             this.HostBox.Controls.Add(this.button3);
             this.HostBox.Controls.Add(this.textBox2);
             this.HostBox.Controls.Add(this.button1);
-            this.HostBox.Location = new System.Drawing.Point(400, 49);
+            this.HostBox.Location = new System.Drawing.Point(400, 58);
             this.HostBox.Name = "HostBox";
             this.HostBox.Size = new System.Drawing.Size(288, 140);
             this.HostBox.TabIndex = 27;
@@ -432,11 +383,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox serverport;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox userid;
-        private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox HostBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
