@@ -100,7 +100,7 @@ namespace ARCHBLOXLauncher1
                 string filePath = Path.Combine(clientPath, Path.GetFileName(@"https://archblox.com/client/" + version_string + ".zip"));
                 ZipFile.ExtractToDirectory(filePath, clientPath);
                 File.Delete(filePath);
-                label1.Text = "Install completed! Have fun playing ARCHBLOX!";
+                label1.Text = "Install completed!";
             }
         }
 

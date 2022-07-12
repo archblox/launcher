@@ -17,6 +17,7 @@ namespace ARCHBLOXLauncher1
     public partial class Form1 : Form
     {
         bool lockanims = true;
+        bool rbxl = false;
         private DiscordRpcClient client;
         bool ingame = false;
         bool hosting = false;
@@ -27,7 +28,6 @@ namespace ARCHBLOXLauncher1
         static string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
         static string clientPath = Path.Combine(folderPath, version_string + @"\");
         static string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
-
         void slideOutJoinBox(object sender, EventArgs e)
         {
             lockanims = true;
@@ -117,6 +117,13 @@ namespace ARCHBLOXLauncher1
         }
         void slideInButtons(object sender, EventArgs e)
         {
+            if (!Directory.Exists(filePath))
+            {
+                UpdateBTN.Text = "Install ARCHBLOX";
+            } else
+            {
+                UpdateBTN.Text = "Re-Install ARCHBLOX";
+            }
             lockanims = true;
             UpdateBTN.Location = new Point(UpdateBTN.Location.X + 8, UpdateBTN.Location.Y);
             JoinBTN.Location = new Point(UpdateBTN.Location.X, JoinBTN.Location.Y);
@@ -161,7 +168,6 @@ namespace ARCHBLOXLauncher1
             AnimationHandler_SlideInButtons.Start();
 
             client = new DiscordRpcClient("996030605106090006");
-            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
             client.Initialize();
             client.SetPresence(new RichPresence()
             {
@@ -178,17 +184,32 @@ namespace ARCHBLOXLauncher1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(filePath))
+            string phrase = textBox2.Text;
+            string[] words = phrase.Split('.');
+
+            foreach (var word in words)
             {
+                if (word == "rbxl") {
+                    rbxl = true;
+                } else {
+                    rbxl = false;
+                }
+            }
+            if (!File.Exists(filePath)) {
                 DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to host. Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
                     ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
                     form2.Show();
                 }
+            } 
+            else if (textBox1.Text == "" || textBox2.Text == "") {
+                MessageBox.Show("Please fill in all of the text fields.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
+            else if (rbxl == false) {
+                MessageBox.Show("Please use a valid RBXL.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {
                 void ProcessExitHandler(object sender, EventArgs args)
                 {
                     hosting = false;
@@ -232,6 +253,7 @@ namespace ARCHBLOXLauncher1
                 pProcess.Start();
                 pProcess.EnableRaisingEvents = true;
                 pProcess.Exited += new EventHandler(ProcessExitHandler);
+                var random = new Random();
                 client.SetPresence(new DiscordRPC.RichPresence()
                 {
                     Details = "Hosting",
@@ -243,7 +265,7 @@ namespace ARCHBLOXLauncher1
                         SmallImageKey = "archblox",
                     }
                 });
-                MessageBox.Show("Starting game server on port " + textBox1.Text + " using " + textBox2.Text, "ARCHBLOX");
+                MessageBox.Show("Starting game server on port " + textBox1.Text + " using " + textBox2.Text, "ARCHBLOX", MessageBoxButtons.OK , MessageBoxIcon.Information);
             }
         }
 
@@ -257,6 +279,10 @@ namespace ARCHBLOXLauncher1
                     ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
                     form2.Show();
                 }
+            }
+            else if (serverip.Text == "" || serverport.Text == "")
+            {
+                MessageBox.Show("Please fill in all of the text fields.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -314,7 +340,7 @@ namespace ARCHBLOXLauncher1
                         SmallImageKey = "archblox",
                     }
                 }); ;
-                MessageBox.Show("Joining " + serverip.Text + ":" + serverport.Text, "ARCHBLOX");
+                MessageBox.Show("Joining " + serverip.Text + ":" + serverport.Text, "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
