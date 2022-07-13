@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.DirectoryServices;
 using System.Windows.Forms;
-
 namespace ARCHBLOXLauncher1
 {
     public partial class Form2 : Form
@@ -24,7 +23,6 @@ namespace ARCHBLOXLauncher1
         public bool DontEvenBother = false;
         private static WebClient wc = new WebClient();
         private static ManualResetEvent handle = new ManualResetEvent(true);
-
 
         private static long GetDirectorySize(string folderPath)
         {
@@ -47,6 +45,7 @@ namespace ARCHBLOXLauncher1
                     DialogResult res = MessageBox.Show("Do you want to delete previous installs of ARCHBLOX? Current size of ARCHBLOX folder: " + GetDirectorySize(folderPath) + "MB.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (res == DialogResult.Yes)
                     {
+                        ARCHBLOXProtocol.ARCHBLOXURIProtocol.Unregister();
                         label1.Text = "Removing previous installs...";
                         Directory.Delete(folderPath, true);
 
@@ -101,6 +100,7 @@ namespace ARCHBLOXLauncher1
                 ZipFile.ExtractToDirectory(filePath, clientPath);
                 File.Delete(filePath);
                 label1.Text = "Install completed!";
+                ARCHBLOXProtocol.ARCHBLOXURIProtocol.Register();
             }
         }
 

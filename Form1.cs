@@ -16,6 +16,7 @@ namespace ARCHBLOXLauncher1
 {
     public partial class Form1 : Form
     {
+        bool exitafterarg = false;
         bool lockanims = true;
         bool rbxl = false;
         private DiscordRpcClient client;
@@ -149,6 +150,87 @@ namespace ARCHBLOXLauncher1
         public Form1()
         {
             InitializeComponent();
+            var lastword = "";
+            var info1 = "";
+            var info2 = "";
+            string[] args = ARCHBLOXProtocol.SharedVariables.Arguments.Split('/');
+            foreach (var word in args)
+            {
+                if (lastword == "host") {
+                    exitafterarg = true;
+                    lastword = "stop";
+                    string[] info = word.Split('|');
+                    foreach (var word2 in info)
+                    {
+                        if (info1 == "") {
+                            info1 = word2;
+                        } else {
+                            info2 = word2;
+                        }
+                    }
+                    if (info1 == "" || info2 == "")
+                    {
+                        MessageBox.Show("Paramaters are invalid. Please try again. (ID: 500)", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(0);
+                    }
+                    var pProcess = new Process();
+                    hosting = true;
+                    pProcess.StartInfo.FileName = filePath;
+                    pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/gameserver.php?port=" + info1 + "&rbxl=" + info2 + "\" -t \"1\"";
+                    pProcess.StartInfo.UseShellExecute = false;
+                    pProcess.StartInfo.RedirectStandardOutput = true;
+                    pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+                    pProcess.StartInfo.CreateNoWindow = false;
+                    pProcess.Start();
+                    MessageBox.Show("Starting game server on port " + info1 + " using " + info2, "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if (lastword == "join")
+                {
+                    exitafterarg = true;
+                    lastword = "stop";
+                    string[] info = word.Split('|');
+                    foreach (var word2 in info)
+                    {
+                        if (info1 == "")
+                        {
+                            info1 = word2;
+                        }
+                        else
+                        {
+                            info2 = word2;
+                        }
+                    }
+                    if (info1 == "" || info2 == "") {
+                        MessageBox.Show("Paramaters are invalid. Please try again. (ID: 500)", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(0);
+                    }
+                    var pProcess = new Process();
+                    hosting = true;
+                    pProcess.StartInfo.FileName = filePath;
+                    pProcess.StartInfo.Arguments = "-a \"http://www.morblox.us/\" -j \"http://www.morblox.us/game/join.ashx?port=" + info1 + "&ip=" + info2 + "\" -t \"1\"";
+                    pProcess.StartInfo.UseShellExecute = false;
+                    pProcess.StartInfo.RedirectStandardOutput = true;
+                    pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+                    pProcess.StartInfo.CreateNoWindow = false;
+                    pProcess.Start();
+                    MessageBox.Show("Joining " + info2 + ":" + info1, "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if (word == "install")
+                {
+                    ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+                    form2.Show();
+                }
+                if (word == "") { } else
+                {
+                    lastword = word;
+                }
+            }
+
+            if (exitafterarg == true)
+            {
+                Environment.Exit(0);
+            }
+
 
             AnimationHandler_SlideOutHostBox.Tick += new EventHandler(slideOutHostBox);
             AnimationHandler_SlideInHostBox.Tick += new EventHandler(slideInHostBox);
