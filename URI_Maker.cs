@@ -9,7 +9,6 @@ namespace ARCHBLOXProtocol
     {
         public static string Arguments = "";
     };
-    [PrincipalPermission(SecurityAction.Demand, Role = @"BUILTIN\Administrators")]
     internal static class ARCHBLOXURIProtocol
     {
         private const string _Protocol = "archblox";
@@ -71,6 +70,9 @@ namespace ARCHBLOXProtocol
 
         internal static void Unregister()
         {
+            PrincipalPermission principalPerm = new PrincipalPermission(null, "Administrators");
+            principalPerm.Demand();
+
             if (!_isWin8)
             {
                 Registry.ClassesRoot.DeleteSubKeyTree("archblox", false);

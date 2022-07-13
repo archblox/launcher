@@ -19,6 +19,7 @@ namespace ARCHBLOXLauncher1
 {
     public partial class Form2 : Form
     {
+        public bool Uri_Installed = false;
         public bool IsCompleted = false;
         public bool DontEvenBother = false;
         private static WebClient wc = new WebClient();
@@ -90,6 +91,7 @@ namespace ARCHBLOXLauncher1
         {
             if (IsCompleted == false)
             {
+
                 IsCompleted = true;
                 byte[] raw = wc.DownloadData("https://archblox.com/client/version.txt");
                 string webData = Encoding.UTF8.GetString(raw);
@@ -99,8 +101,22 @@ namespace ARCHBLOXLauncher1
                 string filePath = Path.Combine(clientPath, Path.GetFileName(@"https://archblox.com/client/" + version_string + ".zip"));
                 ZipFile.ExtractToDirectory(filePath, clientPath);
                 File.Delete(filePath);
-                label1.Text = "Install completed!";
-                ARCHBLOXProtocol.ARCHBLOXURIProtocol.Register();
+                label1.Text = "Installing URi...";
+                try
+                {   
+                    System.AppDomain.CurrentDomain.SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy.WindowsPrincipal);
+                    ARCHBLOXProtocol.ARCHBLOXURIProtocol.Register();
+                    Uri_Installed = true;
+                }
+                catch { Uri_Installed = false; }
+                if (Uri_Installed == true)
+                {
+                    label1.Text = "ARCHBLOX has been installed!";
+                } else
+                {
+                    label1.Text = "ARCHBLOX has been installed without URI.";
+                }
+                
             }
         }
 
