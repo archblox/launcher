@@ -373,9 +373,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\ARCHBLOXLauncher1.csproj",
-      "projectName": "ARCHBLOXLauncher1",
-      "projectPath": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\ARCHBLOXLauncher1.csproj",
+      "projectUniqueName": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\ARCHBLOXLauncherGUI.csproj",
+      "projectName": "ARCHBLOXLauncherGUI",
+      "projectPath": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\ARCHBLOXLauncherGUI.csproj",
       "packagesPath": "C:\\Users\\Thomas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\obj\\publish\\win-x64\\",
       "projectStyle": "PackageReference",

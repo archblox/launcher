@@ -68,7 +68,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::ARCHBLOXLauncher1.Properties.Resources.unknown;
+            this.pictureBox1.Image = global::ARCHBLOXLauncherGUI.Properties.Resources.unknown;
             this.pictureBox1.Location = new System.Drawing.Point(54, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(203, 40);
@@ -138,7 +138,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button2.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttongreen;
+            this.button2.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttongreen;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -197,7 +197,7 @@
             // 
             // button3
             // 
-            this.button3.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttonblue;
+            this.button3.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -221,7 +221,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttongreen;
+            this.button1.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttongreen;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -235,7 +235,7 @@
             // 
             // HostBTN
             // 
-            this.HostBTN.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttonblue;
+            this.HostBTN.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.HostBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.HostBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.HostBTN.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -250,7 +250,7 @@
             // 
             // JoinBTN
             // 
-            this.JoinBTN.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttonblue;
+            this.JoinBTN.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.JoinBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.JoinBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.JoinBTN.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -265,7 +265,7 @@
             // 
             // UpdateBTN
             // 
-            this.UpdateBTN.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttonblue;
+            this.UpdateBTN.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.UpdateBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.UpdateBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UpdateBTN.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -292,7 +292,7 @@
             // 
             // BackBTN_Join
             // 
-            this.BackBTN_Join.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttonblue;
+            this.BackBTN_Join.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.BackBTN_Join.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackBTN_Join.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BackBTN_Join.Location = new System.Drawing.Point(258, -24);
@@ -313,7 +313,7 @@
             // 
             // BackBTN_Host
             // 
-            this.BackBTN_Host.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.buttonblue;
+            this.BackBTN_Host.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.BackBTN_Host.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackBTN_Host.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BackBTN_Host.Location = new System.Drawing.Point(258, -24);
@@ -345,7 +345,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(107)))), ((int)(((byte)(223)))));
-            this.BackgroundImage = global::ARCHBLOXLauncher1.Properties.Resources.animated;
+            this.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.animated;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(308, 259);
             this.Controls.Add(this.BackBTN_Host);

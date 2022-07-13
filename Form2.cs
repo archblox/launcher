@@ -114,7 +114,7 @@ namespace ARCHBLOXLauncher1
                     label1.Text = "ARCHBLOX has been installed!";
                 } else
                 {
-                    label1.Text = "ARCHBLOX has been installed without URI.";
+                    label1.Text = "ARCHBLOX installed without URI.";
                 }
                 
             }

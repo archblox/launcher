@@ -38,7 +38,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::ARCHBLOXLauncher1.Properties.Resources.archblox;
+            this.pictureBox1.Image = global::ARCHBLOXLauncherGUI.Properties.Resources.archblox;
             this.pictureBox1.Location = new System.Drawing.Point(3, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(46, 46);
