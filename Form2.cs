@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Data;
 using System.IO.Compression;
-using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Security.Permissions;
-using Microsoft.Win32;
 using System.Threading;
-using System.Threading.Tasks;
 using System.IO;
-using System.DirectoryServices;
 using System.Windows.Forms;
-namespace ARCHBLOXLauncher1
+namespace ARCHBLOXLauncherGUI
 {
     public partial class Form2 : Form
     {

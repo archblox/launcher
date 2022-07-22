@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lVQUWI7C2nyu6pKz3weYPsLztipg/X1ZdY2OKOPstItibOjpeEmdrkLM0vBlXVQ494eriAGwWuTRPmuQgSC2Pw==",
+  "dgSpecHash": "Oo4F2IjzU/KjIr3EpHNEZMfxpzbM4Ovpb5zF7B0YqFqlf1LtgKSx/311rLiI1zk2rOb8k67gqHWxOYCu6HHr/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\ARCHBLOXLauncher1.csproj",
+  "projectFilePath": "C:\\Users\\Thomas\\source\\repos\\ARCHBLOXLauncher1\\ARCHBLOXLauncherGUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thomas\\.nuget\\packages\\discordrichpresence\\1.0.175\\discordrichpresence.1.0.175.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",

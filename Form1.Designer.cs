@@ -1,4 +1,4 @@
-﻿namespace ARCHBLOXLauncher1
+﻿namespace ARCHBLOXLauncherGUI
 {
     partial class Form1
     {
@@ -69,7 +69,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::ARCHBLOXLauncherGUI.Properties.Resources.unknown;
-            this.pictureBox1.Location = new System.Drawing.Point(54, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(203, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -240,7 +240,7 @@
             this.HostBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.HostBTN.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HostBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.HostBTN.Location = new System.Drawing.Point(-278, 130);
+            this.HostBTN.Location = new System.Drawing.Point(-278, 138);
             this.HostBTN.Name = "HostBTN";
             this.HostBTN.Size = new System.Drawing.Size(276, 52);
             this.HostBTN.TabIndex = 28;
@@ -255,7 +255,7 @@
             this.JoinBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.JoinBTN.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.JoinBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.JoinBTN.Location = new System.Drawing.Point(-278, 188);
+            this.JoinBTN.Location = new System.Drawing.Point(-278, 196);
             this.JoinBTN.Name = "JoinBTN";
             this.JoinBTN.Size = new System.Drawing.Size(276, 52);
             this.JoinBTN.TabIndex = 29;
@@ -270,11 +270,11 @@
             this.UpdateBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UpdateBTN.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpdateBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UpdateBTN.Location = new System.Drawing.Point(-278, 74);
+            this.UpdateBTN.Location = new System.Drawing.Point(-278, 82);
             this.UpdateBTN.Name = "UpdateBTN";
             this.UpdateBTN.Size = new System.Drawing.Size(276, 52);
             this.UpdateBTN.TabIndex = 30;
-            this.UpdateBTN.Text = "Re-Install ARCHBLOX";
+            this.UpdateBTN.Text = "Re-Install";
             this.UpdateBTN.UseVisualStyleBackColor = true;
             this.UpdateBTN.Click += new System.EventHandler(this.UpdateBTN_Click);
             // 
@@ -347,7 +347,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(107)))), ((int)(((byte)(223)))));
             this.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.animated;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(308, 259);
+            this.ClientSize = new System.Drawing.Size(302, 259);
             this.Controls.Add(this.BackBTN_Host);
             this.Controls.Add(this.BackBTN_Join);
             this.Controls.Add(this.UpdateBTN);

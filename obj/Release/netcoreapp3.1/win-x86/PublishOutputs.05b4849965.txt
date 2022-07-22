@@ -1,2 +1,2 @@
-C:\Users\Thomas\OneDrive\Documents\ARCHBLOXLauncherGUI\x86\ARCHBLOXLauncher1.pdb
-C:\Users\Thomas\OneDrive\Documents\ARCHBLOXLauncherGUI\x86\ARCHBLOXLauncher1.exe
+C:\Users\Thomas\OneDrive\Documents\ARCHBLOXLauncherGUI\x86\ARCHBLOXLauncherGUI.pdb
+C:\Users\Thomas\OneDrive\Documents\ARCHBLOXLauncherGUI\x86\ARCHBLOXLauncherGUI.exe

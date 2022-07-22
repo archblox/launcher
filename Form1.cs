@@ -1,21 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
+using IWshRuntimeLibrary;
 using System.Diagnostics;
-using System.Threading;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using DiscordRPC;
-using DiscordRPC.Logging;
-namespace ARCHBLOXLauncher1
+namespace ARCHBLOXLauncherGUI
 {
     public partial class Form1 : Form
     {
+        private void CreateShortcut()
+        {
+            object shDesktop = (object)"Desktop";
+            WshShell shell = new WshShell();
+            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\ARCHBLOX Launcher.lnk";
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+            shortcut.Description = "The launcher for ARCHBLOX Player.";
+            shortcut.TargetPath = ARCHBLOXLauncherGUI.Extensions.GetExecutablePath();
+            shortcut.Save();
+        }
         bool exitafterarg = false;
         bool lockanims = true;
         bool rbxl = false;
@@ -118,13 +124,6 @@ namespace ARCHBLOXLauncher1
         }
         void slideInButtons(object sender, EventArgs e)
         {
-            if (!Directory.Exists(filePath))
-            {
-                UpdateBTN.Text = "Install ARCHBLOX";
-            } else
-            {
-                UpdateBTN.Text = "Re-Install ARCHBLOX";
-            }
             lockanims = true;
             UpdateBTN.Location = new Point(UpdateBTN.Location.X + 8, UpdateBTN.Location.Y);
             JoinBTN.Location = new Point(UpdateBTN.Location.X, JoinBTN.Location.Y);
@@ -150,6 +149,7 @@ namespace ARCHBLOXLauncher1
         public Form1()
         {
             InitializeComponent();
+            CreateShortcut();
             var lastword = "";
             var info1 = "";
             var info2 = "";
@@ -217,7 +217,7 @@ namespace ARCHBLOXLauncher1
                 }
                 if (word == "install")
                 {
-                    ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+                    ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
                     form2.Show();
                 }
                 if (word == "") { } else
@@ -277,11 +277,11 @@ namespace ARCHBLOXLauncher1
                     rbxl = false;
                 }
             }
-            if (!File.Exists(filePath)) {
+            if (!System.IO.File.Exists(filePath)) {
                 DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to host. Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
-                    ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+                    ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
                     form2.Show();
                 }
             } 
@@ -353,12 +353,12 @@ namespace ARCHBLOXLauncher1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(filePath))
+            if (!System.IO.File.Exists(filePath))
             {
                 DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to join " + serverip.Text + ":" + serverport.Text + ". Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
-                    ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+                    ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
                     form2.Show();
                 }
             }
@@ -435,7 +435,7 @@ namespace ARCHBLOXLauncher1
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 string destFile = Path.Combine(clientPath, @"Content\", Path.GetFileName(dialog.FileName));
-                File.Copy(dialog.FileName, destFile, true);
+                System.IO.File.Copy(dialog.FileName, destFile, true);
                 textBox2.Text = Path.GetFileName(dialog.FileName);
             }
         }
@@ -451,7 +451,7 @@ namespace ARCHBLOXLauncher1
         }
         private void Form1_HelpButtonClicked(Object sender, CancelEventArgs e)
         {
-            ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+            ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
             form2.Show();
         }
 
@@ -472,7 +472,7 @@ namespace ARCHBLOXLauncher1
 
         private void UpdateBTN_Click(object sender, EventArgs e)
         {
-            ARCHBLOXLauncher1.Form2 form2 = new ARCHBLOXLauncher1.Form2();
+            ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
             form2.Show();
         }
 

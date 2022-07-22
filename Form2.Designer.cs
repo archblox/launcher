@@ -1,4 +1,4 @@
-﻿namespace ARCHBLOXLauncher1
+﻿namespace ARCHBLOXLauncherGUI
 {
     partial class Form2
     {

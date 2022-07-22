@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARCHBLOXLauncherGUI", "ARCHBLOXLauncherGUI.csproj", "{2C3AC3C0-EFA7-4A85-BDE2-99DA398B5A76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C3AC3C0-EFA7-4A85-BDE2-99DA398B5A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3AC3C0-EFA7-4A85-BDE2-99DA398B5A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3AC3C0-EFA7-4A85-BDE2-99DA398B5A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3AC3C0-EFA7-4A85-BDE2-99DA398B5A76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BBF50A1-31F7-48A7-BFFB-70692FC4BA96}
+	EndGlobalSection
+EndGlobal
