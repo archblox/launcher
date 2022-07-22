@@ -14,6 +14,7 @@ namespace ARCHBLOXLauncherGUI
     {
         private void CreateShortcut()
         {
+            // create shortcut on user's desktop
             object shDesktop = (object)"Desktop";
             WshShell shell = new WshShell();
             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\ARCHBLOX Launcher.lnk";
@@ -22,6 +23,7 @@ namespace ARCHBLOXLauncherGUI
             shortcut.TargetPath = ARCHBLOXLauncherGUI.Extensions.GetExecutablePath();
             shortcut.Save();
         }
+        // variables
         bool exitafterarg = false;
         bool lockanims = true;
         bool rbxl = false;
@@ -35,6 +37,7 @@ namespace ARCHBLOXLauncherGUI
         static string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
         static string clientPath = Path.Combine(folderPath, version_string + @"\");
         static string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
+        // animations
         void slideOutJoinBox(object sender, EventArgs e)
         {
             lockanims = true;
@@ -154,6 +157,7 @@ namespace ARCHBLOXLauncherGUI
             var info1 = "";
             var info2 = "";
             string[] args = ARCHBLOXProtocol.SharedVariables.Arguments.Split('/');
+            // check to see if uri/arguments were used
             foreach (var word in args)
             {
                 if (lastword == "host") {
@@ -228,9 +232,11 @@ namespace ARCHBLOXLauncherGUI
 
             if (exitafterarg == true)
             {
+                // close program
                 Environment.Exit(0);
             }
 
+            // setup animations
 
             AnimationHandler_SlideOutHostBox.Tick += new EventHandler(slideOutHostBox);
             AnimationHandler_SlideInHostBox.Tick += new EventHandler(slideInHostBox);
@@ -266,6 +272,7 @@ namespace ARCHBLOXLauncherGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // hosting
             string phrase = textBox2.Text;
             string[] words = phrase.Split('.');
 
@@ -353,6 +360,7 @@ namespace ARCHBLOXLauncherGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // joining
             if (!System.IO.File.Exists(filePath))
             {
                 DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to join " + serverip.Text + ":" + serverport.Text + ". Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -428,6 +436,7 @@ namespace ARCHBLOXLauncherGUI
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // ask user to open dialog
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Choose a RBXL...";
             dialog.AddExtension = true;
@@ -451,6 +460,7 @@ namespace ARCHBLOXLauncherGUI
         }
         private void Form1_HelpButtonClicked(Object sender, CancelEventArgs e)
         {
+            // this no longer exists
             ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
             form2.Show();
         }

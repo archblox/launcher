@@ -11,6 +11,7 @@ namespace ARCHBLOXLauncherGUI
 {
     public partial class Form2 : Form
     {
+        // setup variables
         public bool Uri_Installed = false;
         public bool IsCompleted = false;
         public bool DontEvenBother = false;
@@ -19,6 +20,7 @@ namespace ARCHBLOXLauncherGUI
 
         private static long GetDirectorySize(string folderPath)
         {
+            // get size of a directory
             DirectoryInfo di = new DirectoryInfo(folderPath);
             return di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(fi => fi.Length) / 1000000;
         }
@@ -26,6 +28,7 @@ namespace ARCHBLOXLauncherGUI
         public Form2()
         {
             InitializeComponent();
+            // setup file paths etc
             byte[] raw = wc.DownloadData("https://archblox.com/client/version.txt");
             string webData = Encoding.UTF8.GetString(raw);
             string version_string = webData;
@@ -35,6 +38,7 @@ namespace ARCHBLOXLauncherGUI
             {
                 if (Directory.Exists(folderPath))
                 {
+                    // since the folder already exists, show size of folder and ask user if they want to delete older versions
                     DialogResult res = MessageBox.Show("Do you want to delete previous installs of ARCHBLOX? Current size of ARCHBLOX folder: " + GetDirectorySize(folderPath) + "MB.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (res == DialogResult.Yes)
                     {
@@ -45,6 +49,7 @@ namespace ARCHBLOXLauncherGUI
                     }
                 }
             }
+            // setup variables
             wc.DownloadProgressChanged += Client_DownloadProgressChanged;
             wc.DownloadFileCompleted += Client_DownloadFileCompleted;
             progressBar1.Style = ProgressBarStyle.Marquee;
@@ -53,6 +58,7 @@ namespace ARCHBLOXLauncherGUI
             wc.DownloadFileCompleted += Client_DownloadFileCompleted;
             if (Directory.Exists(clientPath))
             {
+                // ask user if they want to re-install
                 DialogResult res = MessageBox.Show("The latest version of ARCHBLOX is already installed. Do you want to re-install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
@@ -68,6 +74,7 @@ namespace ARCHBLOXLauncherGUI
             }
             if (DontEvenBother == false)
             {
+                // continue with install
                 Directory.CreateDirectory(clientPath);
                 wc.DownloadFileAsync(new Uri(@"https://archblox.com/client/" + version_string + ".zip"), filePath);
                 progressBar1.Style = ProgressBarStyle.Blocks;
@@ -83,7 +90,7 @@ namespace ARCHBLOXLauncherGUI
         {
             if (IsCompleted == false)
             {
-
+                // the download has completed, extract zip, setup URI.
                 IsCompleted = true;
                 byte[] raw = wc.DownloadData("https://archblox.com/client/version.txt");
                 string webData = Encoding.UTF8.GetString(raw);
@@ -114,6 +121,7 @@ namespace ARCHBLOXLauncherGUI
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
+            // update the progress bar
             progressBar1.Minimum = 0;
             double receive = double.Parse(e.BytesReceived.ToString());
             double total = double.Parse(e.TotalBytesToReceive.ToString());
