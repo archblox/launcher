@@ -1,16 +1,10 @@
 {
   "runtimeOptions": {
     "tfm": "netcoreapp3.1",
-    "includedFrameworks": [
-      {
-        "name": "Microsoft.NETCore.App",
-        "version": "3.1.0"
-      },
-      {
-        "name": "Microsoft.WindowsDesktop.App",
-        "version": "3.1.0"
-      }
-    ],
+    "framework": {
+      "name": "Microsoft.WindowsDesktop.App",
+      "version": "3.1.0"
+    },
     "configProperties": {
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false
     }

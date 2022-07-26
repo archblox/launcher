@@ -28,13 +28,14 @@ namespace ARCHBLOXLauncherGUI
         public Form2()
         {
             InitializeComponent();
-            // setup file paths etc
+            // setup other variables
             byte[] raw = wc.DownloadData("https://archblox.com/client/version.txt");
             string webData = Encoding.UTF8.GetString(raw);
             string version_string = webData;
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
             string clientPath = Path.Combine(folderPath, version_string + @"\");
             string filePath = Path.Combine(clientPath, Path.GetFileName(@"https://archblox.com/client/" + version_string + ".zip"));
+            // setup file paths etc
             {
                 if (Directory.Exists(folderPath))
                 {
@@ -42,7 +43,6 @@ namespace ARCHBLOXLauncherGUI
                     DialogResult res = MessageBox.Show("Do you want to delete previous installs of ARCHBLOX? Current size of ARCHBLOX folder: " + GetDirectorySize(folderPath) + "MB.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (res == DialogResult.Yes)
                     {
-                        ARCHBLOXProtocol.ARCHBLOXURIProtocol.Unregister();
                         label1.Text = "Removing previous installs...";
                         Directory.Delete(folderPath, true);
 
@@ -81,11 +81,6 @@ namespace ARCHBLOXLauncherGUI
                 handle.WaitOne();
             }
         }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            // nothing
-        }
         private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if (IsCompleted == false)
@@ -103,7 +98,6 @@ namespace ARCHBLOXLauncherGUI
                 label1.Text = "Installing URi...";
                 try
                 {   
-                    System.AppDomain.CurrentDomain.SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy.WindowsPrincipal);
                     ARCHBLOXProtocol.ARCHBLOXURIProtocol.Register();
                     Uri_Installed = true;
                 }

@@ -25,7 +25,6 @@ namespace ARCHBLOXLauncherGUI
         }
         // variables
         bool exitafterarg = false;
-        bool lockanims = true;
         bool rbxl = false;
         private DiscordRpcClient client;
         bool ingame = false;
@@ -38,120 +37,10 @@ namespace ARCHBLOXLauncherGUI
         static string clientPath = Path.Combine(folderPath, version_string + @"\");
         static string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
         // animations
-        void slideOutJoinBox(object sender, EventArgs e)
-        {
-            lockanims = true;
-            int x = JoinBox.Location.X;
-            JoinBox.Location = new Point(x + 10, JoinBox.Location.Y);
-
-            if (x > 358)
-            {
-                lockanims = false;
-                AnimationHandler_SlideOutJoinBox.Stop();
-            }
-        }
-        void slideInJoinBox(object sender, EventArgs e)
-        {
-            lockanims = true;
-            int x = JoinBox.Location.X;
-            JoinBox.Location = new Point(x - 10, JoinBox.Location.Y);
-
-            if (x < 30)
-            {
-                lockanims = false;
-                AnimationHandler_SlideInJoinBox.Stop();
-            }
-        }
-        void slideOutHostBox(object sender, EventArgs e)
-        {
-            lockanims = true;
-            int x = HostBox.Location.X;
-            HostBox.Location = new Point(x + 10, HostBox.Location.Y);
-
-            if (x > 358)
-            {
-                lockanims = false;
-                AnimationHandler_SlideOutHostBox.Stop();
-            }
-        }
-        void slideInHostBox(object sender, EventArgs e)
-        {
-            lockanims = true;
-            int x = HostBox.Location.X;
-            HostBox.Location = new Point(x - 10, HostBox.Location.Y);
-            if (x < 30)
-            {
-                lockanims = false;
-                AnimationHandler_SlideInHostBox.Stop();
-            }
-        }
-        void slideOutBackBTNJoin(object sender, EventArgs e)
-        {
-            int y = BackBTN_Join.Location.Y;
-            BackBTN_Join.Location = new Point(BackBTN_Join.Location.X, y - 8);
-
-            if (y < -25)
-            {
-                AnimationHandler_SlideOutBackBTNJoin.Stop();
-            }
-        }
-        void slideInBackBTNJoin(object sender, EventArgs e)
-        {
-            int y = BackBTN_Join.Location.Y;
-            BackBTN_Join.Location = new Point(BackBTN_Join.Location.X, y + 8);
-
-            if (y > 10)
-            {
-                AnimationHandler_SlideInBackBTNJoin.Stop();
-            }
-        }
-        void slideOutBackBTNHost(object sender, EventArgs e)
-        {
-            int y = BackBTN_Host.Location.Y;
-            BackBTN_Host.Location = new Point(BackBTN_Host.Location.X, y - 8);
-
-            if (y < -25)
-            {
-                AnimationHandler_SlideOutBackBTNHost.Stop();
-            }
-        }
-        void slideInBackBTNHost(object sender, EventArgs e)
-        {
-            int y = BackBTN_Host.Location.Y;
-            BackBTN_Host.Location = new Point(BackBTN_Host.Location.X, y + 8);
-
-            if (y > 10)
-            {
-                AnimationHandler_SlideInBackBTNHost.Stop();
-            }
-        }
-        void slideInButtons(object sender, EventArgs e)
-        {
-            lockanims = true;
-            UpdateBTN.Location = new Point(UpdateBTN.Location.X + 8, UpdateBTN.Location.Y);
-            JoinBTN.Location = new Point(UpdateBTN.Location.X, JoinBTN.Location.Y);
-            HostBTN.Location = new Point(UpdateBTN.Location.X, HostBTN.Location.Y);
-            if (UpdateBTN.Location.X > 10)
-            {
-                AnimationHandler_SlideInButtons.Stop();
-                lockanims = false;
-            }
-        }
-        void slideOutButtons(object sender, EventArgs e)
-        {
-            lockanims = true;
-            UpdateBTN.Location = new Point(UpdateBTN.Location.X - 8, UpdateBTN.Location.Y);
-            JoinBTN.Location = new Point(UpdateBTN.Location.X, JoinBTN.Location.Y);
-            HostBTN.Location = new Point(UpdateBTN.Location.X, HostBTN.Location.Y);
-            if (UpdateBTN.Location.X < -278)
-            {
-                lockanims = false;
-                AnimationHandler_SlideOutButtons.Stop();
-            }
-        }
         public Form1()
         {
             InitializeComponent();
+            ARCHBLOXProtocol.ARCHBLOXURIProtocol.Register();
             CreateShortcut();
             var lastword = "";
             var info1 = "";
@@ -235,25 +124,6 @@ namespace ARCHBLOXLauncherGUI
                 // close program
                 Environment.Exit(0);
             }
-
-            // setup animations
-
-            AnimationHandler_SlideOutHostBox.Tick += new EventHandler(slideOutHostBox);
-            AnimationHandler_SlideInHostBox.Tick += new EventHandler(slideInHostBox);
-
-            AnimationHandler_SlideOutJoinBox.Tick += new EventHandler(slideOutJoinBox);
-            AnimationHandler_SlideInJoinBox.Tick += new EventHandler(slideInJoinBox);
-
-            AnimationHandler_SlideOutBackBTNHost.Tick += new EventHandler(slideOutBackBTNHost);
-            AnimationHandler_SlideInBackBTNHost.Tick += new EventHandler(slideInBackBTNHost);
-
-            AnimationHandler_SlideOutBackBTNJoin.Tick += new EventHandler(slideOutBackBTNJoin);
-            AnimationHandler_SlideInBackBTNJoin.Tick += new EventHandler(slideInBackBTNJoin);
-
-            AnimationHandler_SlideOutButtons.Tick += new EventHandler(slideOutButtons);
-            AnimationHandler_SlideInButtons.Tick += new EventHandler(slideInButtons);
-
-            AnimationHandler_SlideInButtons.Start();
 
             client = new DiscordRpcClient("996030605106090006");
             client.Initialize();
@@ -448,36 +318,14 @@ namespace ARCHBLOXLauncherGUI
                 textBox2.Text = Path.GetFileName(dialog.FileName);
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Form1_HelpButtonClicked(Object sender, CancelEventArgs e)
-        {
-            // this no longer exists
-            ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
-            form2.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void JoinBTN_Click(object sender, EventArgs e)
         {
-            if (lockanims == false)
-            {
-                AnimationHandler_SlideOutButtons.Start();
-                AnimationHandler_SlideInJoinBox.Start();
-                AnimationHandler_SlideInBackBTNJoin.Start();
-            }
+            JoinBTN.Visible = false;
+            HostBTN.Visible = false;
+            UpdateBTN.Visible = false;
+            JoinBox.Visible = true;
+            HostBox.Visible = false;
+            BackBTN.Visible = true;
         }
 
         private void UpdateBTN_Click(object sender, EventArgs e)
@@ -486,33 +334,24 @@ namespace ARCHBLOXLauncherGUI
             form2.Show();
         }
 
-        private void BackBTN_Join_Click(object sender, EventArgs e)
+        private void BackBTN_Click(object sender, EventArgs e)
         {
-            if (lockanims == false) {
-                AnimationHandler_SlideInButtons.Start();
-                AnimationHandler_SlideOutJoinBox.Start();
-                AnimationHandler_SlideOutBackBTNJoin.Start();
-            }
-        }
-
-        private void BackBTN_Host_Click(object sender, EventArgs e)
-        {
-            if (lockanims == false)
-            {
-                AnimationHandler_SlideInButtons.Start();
-                AnimationHandler_SlideOutHostBox.Start();
-                AnimationHandler_SlideOutBackBTNHost.Start();
-            }
+            JoinBTN.Visible = true;
+            HostBTN.Visible = true;
+            UpdateBTN.Visible = true;
+            JoinBox.Visible = false;
+            HostBox.Visible = false;
+            BackBTN.Visible = false;
         }
 
         private void HostBTN_Click(object sender, EventArgs e)
         {
-            if (lockanims == false)
-            {
-                AnimationHandler_SlideOutButtons.Start();
-                AnimationHandler_SlideInHostBox.Start();
-                AnimationHandler_SlideInBackBTNHost.Start();
-            }
+            JoinBTN.Visible = false;
+            HostBTN.Visible = false;
+            UpdateBTN.Visible = false;
+            JoinBox.Visible = false;
+            HostBox.Visible = true;
+            BackBTN.Visible = true;
         }
     }
 }

@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using System.Security.Permissions;
 using Microsoft.Win32;
+using System.Text;
+using System.Net;
+using System.IO;
 
 namespace ARCHBLOXProtocol
 {
@@ -11,83 +14,30 @@ namespace ARCHBLOXProtocol
     };
     internal static class ARCHBLOXURIProtocol
     {
-        private const string _Protocol = "archblox";
-        private const string _ProtocolHandler = "url.archblox";
-
-        private static readonly string _launch = string.Format(
-            "{0}{1}{0} {0}%1{0}", (char)34, Application.ExecutablePath);
-
-        private static readonly Version _win8Version = new Version(6, 2, 9200, 0);
-        private static readonly bool _isWin8 =
-            Environment.OSVersion.Platform == PlatformID.Win32NT &&
-            Environment.OSVersion.Version >= _win8Version;
+        private static RegistryKey softwareClasses = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("Classes", true);
 
         internal static void Register()
         {
-            if (_isWin8) RegisterWin8();
-            else RegisterWin7();
-        }
+            // credit to p0s0 for helping me with this
+            if (softwareClasses.OpenSubKey("archblox") == null) {} else { softwareClasses.DeleteSubKeyTree("archblox"); }
+            RegistryKey key = softwareClasses.CreateSubKey("archblox", true);
+            key.SetValue("", "URL: archblox Protocol");
+            key.SetValue("URL Protocol", "");
 
-        private static void RegisterWin7()
-        {
-            var regKey = Registry.ClassesRoot.CreateSubKey(_Protocol);
+            RegistryKey key1 = key.CreateSubKey("DefaultIcon", true);
+            key1.SetValue("", ARCHBLOXLauncherGUI.Extensions.GetExecutablePath());
 
-            regKey.CreateSubKey("DefaultIcon")
-                .SetValue(null, string.Format("{0}{1},1{0}", (char)34,
-                    Application.ExecutablePath));
+            RegistryKey key2 = key.CreateSubKey("shell", true);
+            RegistryKey key3 = key2.CreateSubKey("open", true);
 
-            regKey.SetValue(null, "URL:archblox Protocol");
-            regKey.SetValue("URL Protocol", "");
+            RegistryKey key4 = key3.CreateSubKey("command", true);
+            key4.SetValue("", "\"" + ARCHBLOXLauncherGUI.Extensions.GetExecutablePath() + "\" %1");
 
-            regKey = regKey.CreateSubKey(@"shell\open\command");
-            regKey.SetValue(null, _launch);
-        }
-
-        private static void RegisterWin8()
-        {
-            RegisterWin7();
-
-            var regKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Classes")
-                .CreateSubKey(_ProtocolHandler);
-
-            regKey.SetValue(null, _Protocol);
-
-            regKey.CreateSubKey("DefaultIcon")
-                 .SetValue(null, string.Format("{0}{1},1{0}", (char)34,
-                     Application.ExecutablePath));
-
-            regKey.CreateSubKey(@"shell\open\command").SetValue(null, _launch);
-
-            Registry.LocalMachine.CreateSubKey(string.Format(
-                @"SOFTWARE\{0}\{1}\Capabilities\ApplicationDescription\URLAssociations",
-                Application.CompanyName, Application.ProductName))
-                .SetValue(_Protocol, _ProtocolHandler);
-
-            Registry.LocalMachine.CreateSubKey(@"SOFTWARE\RegisteredApplications")
-                .SetValue(Application.ProductName, string.Format(
-                    @"SOFTWARE\{0}\Capabilities", Application.ProductName));
-        }
-
-        internal static void Unregister()
-        {
-            PrincipalPermission principalPerm = new PrincipalPermission(null, "Administrators");
-            principalPerm.Demand();
-
-            if (!_isWin8)
-            {
-                Registry.ClassesRoot.DeleteSubKeyTree("archblox", false);
-                return;
-            }
-
-            // extra work required.
-            Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Classes")
-                .DeleteSubKeyTree(_ProtocolHandler, false);
-
-            Registry.LocalMachine.DeleteSubKeyTree(string.Format(@"SOFTWARE\{0}\{1}",
-                Application.CompanyName, Application.ProductName));
-
-            Registry.LocalMachine.CreateSubKey(@"SOFTWARE\RegisteredApplications")
-                .DeleteValue(Application.ProductName);
+            key.Close();
+            key1.Close();
+            key2.Close();
+            key3.Close();
+            key4.Close();
         }
     }
 }
