@@ -49,15 +49,19 @@ namespace ARCHBLOXLauncherGUI
             // check to see if uri/arguments were used
             foreach (var word in args)
             {
-                if (lastword == "host") {
+                if (lastword == "host")
+                {
                     exitafterarg = true;
                     lastword = "stop";
                     string[] info = word.Split('|');
                     foreach (var word2 in info)
                     {
-                        if (info1 == "") {
+                        if (info1 == "")
+                        {
                             info1 = word2;
-                        } else {
+                        }
+                        else
+                        {
                             info2 = word2;
                         }
                     }
@@ -93,7 +97,8 @@ namespace ARCHBLOXLauncherGUI
                             info2 = word2;
                         }
                     }
-                    if (info1 == "" || info2 == "") {
+                    if (info1 == "" || info2 == "")
+                    {
                         MessageBox.Show("Paramaters are invalid. Please try again. (ID: 500)", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.Exit(0);
                     }
@@ -113,7 +118,8 @@ namespace ARCHBLOXLauncherGUI
                     ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
                     form2.Show();
                 }
-                if (word == "") { } else
+                if (word == "") { }
+                else
                 {
                     lastword = word;
                 }
@@ -145,30 +151,38 @@ namespace ARCHBLOXLauncherGUI
             // hosting
             string phrase = textBox2.Text;
             string[] words = phrase.Split('.');
-
+            string sWord = "";
             foreach (var word in words)
             {
-                if (word == "rbxl") {
+                sWord = word.ToLower();
+                if (sWord == "rbxl")
+                {
                     rbxl = true;
-                } else {
+                }
+                else
+                {
                     rbxl = false;
                 }
             }
-            if (!System.IO.File.Exists(filePath)) {
+            if (!System.IO.File.Exists(filePath))
+            {
                 DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to host. Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
                     ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
                     form2.Show();
                 }
-            } 
-            else if (textBox1.Text == "" || textBox2.Text == "") {
+            }
+            else if (textBox1.Text == "" || textBox2.Text == "")
+            {
                 MessageBox.Show("Please fill in all of the text fields.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (rbxl == false) {
-                MessageBox.Show("Please use a valid RBXL.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (rbxl == false)
+            {
+                MessageBox.Show("Please use a valid .RBXL! ." + sWord + " is not a supported file format.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else {
+            else
+            {
                 void ProcessExitHandler(object sender, EventArgs args)
                 {
                     hosting = false;
@@ -224,7 +238,7 @@ namespace ARCHBLOXLauncherGUI
                         SmallImageKey = "archblox",
                     }
                 });
-                MessageBox.Show("Starting game server on port " + textBox1.Text + " using " + textBox2.Text, "ARCHBLOX", MessageBoxButtons.OK , MessageBoxIcon.Information);
+                MessageBox.Show("Starting game server on port " + textBox1.Text + " using " + textBox2.Text, "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -313,9 +327,42 @@ namespace ARCHBLOXLauncherGUI
             dialog.Filter = "Place File (*.rbxl)| *.rbxl";
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                string destFile = Path.Combine(clientPath, @"Content\", Path.GetFileName(dialog.FileName));
-                System.IO.File.Copy(dialog.FileName, destFile, true);
-                textBox2.Text = Path.GetFileName(dialog.FileName);
+                // check if it is a rbxl
+                string word = Path.GetExtension(dialog.FileName);
+                word = word.ToLower();
+                if (word == ".rbxl")
+                {
+                    // Thanks to ROBLOX LEGACY PLACE CONVERTER by BakonBot for the binary rbxl format detection.
+                    string[] file = System.IO.File.ReadAllLines(dialog.FileName);
+                    foreach (var line in file)
+                    {
+                        if (line.Contains("<roblox!"))
+                        {
+                            // is binary/unsupported format
+                            MessageBox.Show("Sorry, binary .RBXL files are not supported. Please convert the RBXL into XML format using a converter, then try again.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            // it's supported, yay!
+                            string destFile = Path.Combine(clientPath, @"Content\", Path.GetFileName(dialog.FileName));
+                            System.IO.File.Copy(dialog.FileName, destFile, true);
+                            textBox2.Text = Path.GetFileName(dialog.FileName);
+                            return;
+                        }
+                    }
+                }
+                else if (word == ".rbxlx")
+                {
+                    // rbxlx, cringe!
+                    MessageBox.Show(".RBXLX file formats are not supported, are you sure you converted the .RBXL correctly?", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    // wtf this isn't even a place
+                    MessageBox.Show(word.ToUpper() + " is not a supported file type!", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void JoinBTN_Click(object sender, EventArgs e)
