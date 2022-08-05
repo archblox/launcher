@@ -57,9 +57,9 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::ARCHBLOXLauncherGUI.Properties.Resources.unknown;
-            this.pictureBox1.Location = new System.Drawing.Point(51, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(203, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(203, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -72,9 +72,9 @@
             this.JoinBox.Controls.Add(this.serverport);
             this.JoinBox.Controls.Add(this.label7);
             this.JoinBox.Controls.Add(this.button2);
-            this.JoinBox.Location = new System.Drawing.Point(7, 48);
+            this.JoinBox.Location = new System.Drawing.Point(7, 51);
             this.JoinBox.Name = "JoinBox";
-            this.JoinBox.Size = new System.Drawing.Size(286, 140);
+            this.JoinBox.Size = new System.Drawing.Size(286, 150);
             this.JoinBox.TabIndex = 26;
             this.JoinBox.TabStop = false;
             this.JoinBox.Visible = false;
@@ -83,40 +83,40 @@
             // 
             this.serverip.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.serverip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.serverip.Location = new System.Drawing.Point(6, 37);
+            this.serverip.Location = new System.Drawing.Point(6, 40);
             this.serverip.MaxLength = 15;
             this.serverip.Name = "serverip";
             this.serverip.PlaceholderText = "IP";
-            this.serverip.Size = new System.Drawing.Size(276, 21);
+            this.serverip.Size = new System.Drawing.Size(276, 23);
             this.serverip.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(6, 18);
+            this.label4.Location = new System.Drawing.Point(6, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(277, 14);
+            this.label4.Size = new System.Drawing.Size(270, 15);
             this.label4.TabIndex = 17;
             this.label4.Text = "Server IP (Use localhost if joining your own server)";
             // 
             // serverport
             // 
             this.serverport.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.serverport.Location = new System.Drawing.Point(6, 78);
+            this.serverport.Location = new System.Drawing.Point(6, 84);
             this.serverport.MaxLength = 5;
             this.serverport.Name = "serverport";
             this.serverport.PlaceholderText = "PORT";
-            this.serverport.Size = new System.Drawing.Size(274, 21);
+            this.serverport.Size = new System.Drawing.Size(274, 23);
             this.serverport.TabIndex = 19;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(6, 62);
+            this.label7.Location = new System.Drawing.Point(6, 66);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 14);
+            this.label7.Size = new System.Drawing.Size(64, 15);
             this.label7.TabIndex = 25;
             this.label7.Text = "Server Port";
             // 
@@ -127,9 +127,9 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(6, 109);
+            this.button2.Location = new System.Drawing.Point(6, 117);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(274, 21);
+            this.button2.Size = new System.Drawing.Size(274, 22);
             this.button2.TabIndex = 24;
             this.button2.Text = "Join";
             this.button2.UseVisualStyleBackColor = false;
@@ -144,9 +144,9 @@
             this.HostBox.Controls.Add(this.button3);
             this.HostBox.Controls.Add(this.textBox2);
             this.HostBox.Controls.Add(this.button1);
-            this.HostBox.Location = new System.Drawing.Point(7, 48);
+            this.HostBox.Location = new System.Drawing.Point(7, 51);
             this.HostBox.Name = "HostBox";
-            this.HostBox.Size = new System.Drawing.Size(288, 131);
+            this.HostBox.Size = new System.Drawing.Size(288, 140);
             this.HostBox.TabIndex = 27;
             this.HostBox.TabStop = false;
             this.HostBox.Visible = false;
@@ -155,29 +155,29 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(4, 18);
+            this.label2.Location = new System.Drawing.Point(4, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 14);
+            this.label2.Size = new System.Drawing.Size(162, 15);
             this.label2.TabIndex = 23;
             this.label2.Text = "Port (53640 is recommended)";
             // 
             // textBox1
             // 
             this.textBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox1.Location = new System.Drawing.Point(6, 35);
+            this.textBox1.Location = new System.Drawing.Point(6, 38);
             this.textBox1.MaxLength = 5;
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "PORT";
-            this.textBox1.Size = new System.Drawing.Size(274, 21);
+            this.textBox1.Size = new System.Drawing.Size(274, 23);
             this.textBox1.TabIndex = 24;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(4, 59);
+            this.label3.Location = new System.Drawing.Point(4, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 14);
+            this.label3.Size = new System.Drawing.Size(187, 15);
             this.label3.TabIndex = 27;
             this.label3.Text = "Filename (use temp.rbxl if unsure)";
             // 
@@ -187,9 +187,9 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(207, 75);
+            this.button3.Location = new System.Drawing.Point(207, 80);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 21);
+            this.button3.Size = new System.Drawing.Size(73, 22);
             this.button3.TabIndex = 26;
             this.button3.Text = "Browse...";
             this.button3.UseVisualStyleBackColor = true;
@@ -198,10 +198,10 @@
             // textBox2
             // 
             this.textBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox2.Location = new System.Drawing.Point(6, 76);
+            this.textBox2.Location = new System.Drawing.Point(6, 81);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "Filename";
-            this.textBox2.Size = new System.Drawing.Size(195, 21);
+            this.textBox2.Size = new System.Drawing.Size(195, 23);
             this.textBox2.TabIndex = 25;
             // 
             // button1
@@ -211,9 +211,9 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(6, 102);
+            this.button1.Location = new System.Drawing.Point(6, 109);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(274, 21);
+            this.button1.Size = new System.Drawing.Size(274, 22);
             this.button1.TabIndex = 28;
             this.button1.Text = "Host";
             this.button1.UseVisualStyleBackColor = false;
@@ -226,9 +226,9 @@
             this.HostBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.HostBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HostBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.HostBTN.Location = new System.Drawing.Point(12, 121);
+            this.HostBTN.Location = new System.Drawing.Point(12, 130);
             this.HostBTN.Name = "HostBTN";
-            this.HostBTN.Size = new System.Drawing.Size(137, 49);
+            this.HostBTN.Size = new System.Drawing.Size(137, 52);
             this.HostBTN.TabIndex = 28;
             this.HostBTN.Text = "Host a Game";
             this.HostBTN.UseVisualStyleBackColor = true;
@@ -241,9 +241,9 @@
             this.JoinBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.JoinBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.JoinBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.JoinBTN.Location = new System.Drawing.Point(155, 121);
+            this.JoinBTN.Location = new System.Drawing.Point(155, 130);
             this.JoinBTN.Name = "JoinBTN";
-            this.JoinBTN.Size = new System.Drawing.Size(135, 49);
+            this.JoinBTN.Size = new System.Drawing.Size(135, 52);
             this.JoinBTN.TabIndex = 29;
             this.JoinBTN.Text = "Join a Game";
             this.JoinBTN.UseVisualStyleBackColor = true;
@@ -256,9 +256,9 @@
             this.UpdateBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UpdateBTN.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpdateBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UpdateBTN.Location = new System.Drawing.Point(12, 66);
+            this.UpdateBTN.Location = new System.Drawing.Point(12, 71);
             this.UpdateBTN.Name = "UpdateBTN";
-            this.UpdateBTN.Size = new System.Drawing.Size(276, 49);
+            this.UpdateBTN.Size = new System.Drawing.Size(277, 53);
             this.UpdateBTN.TabIndex = 30;
             this.UpdateBTN.Text = "Install";
             this.UpdateBTN.UseVisualStyleBackColor = true;
@@ -269,9 +269,9 @@
             this.BackBTN.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.buttonblue;
             this.BackBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackBTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BackBTN.Location = new System.Drawing.Point(254, 19);
+            this.BackBTN.Location = new System.Drawing.Point(254, 20);
             this.BackBTN.Name = "BackBTN";
-            this.BackBTN.Size = new System.Drawing.Size(42, 21);
+            this.BackBTN.Size = new System.Drawing.Size(42, 22);
             this.BackBTN.TabIndex = 31;
             this.BackBTN.Text = "Back";
             this.BackBTN.UseVisualStyleBackColor = true;
@@ -280,12 +280,12 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(107)))), ((int)(((byte)(223)))));
             this.BackgroundImage = global::ARCHBLOXLauncherGUI.Properties.Resources.animated;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(302, 193);
+            this.ClientSize = new System.Drawing.Size(302, 207);
             this.Controls.Add(this.BackBTN);
             this.Controls.Add(this.UpdateBTN);
             this.Controls.Add(this.JoinBTN);

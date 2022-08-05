@@ -6,10 +6,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>archblox.ico</ApplicationIcon>
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
-    <PackageProjectUrl>https://www.archblox.com</PackageProjectUrl>
+    <PackageProjectUrl>http://www.archblox.com</PackageProjectUrl>
     <Description>ARCHBLOX Launcher</Description>
     <PackageIcon>archblox.png</PackageIcon>
-    <RepositoryUrl>https://www.github.com/thomasluigi07/ARCHBLOXLauncher</RepositoryUrl>
+    <RepositoryUrl>http://www.github.com/thomasluigi07/ARCHBLOXLauncher</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyVersion>2.7</AssemblyVersion>
     <FileVersion>2.7</FileVersion>

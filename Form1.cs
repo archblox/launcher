@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Drawing;
 using System.Text;
 using IWshRuntimeLibrary;
 using System.Diagnostics;
@@ -30,16 +28,26 @@ namespace ARCHBLOXLauncherGUI
         bool ingame = false;
         bool hosting = false;
         private static WebClient wc = new WebClient();
-        static byte[] raw = wc.DownloadData("https://archblox.com/client/version.txt");
+        static byte[] raw = wc.DownloadData("http://archblox.com/client/version.txt");
         static string webData = Encoding.UTF8.GetString(raw);
         static string version_string = webData;
         static string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Archblx\", @"Versions\");
         static string clientPath = Path.Combine(folderPath, version_string + @"\");
         static string filePath = Path.Combine(clientPath, "ArchbloxPlayerBeta.exe");
-        // animations
+        delegate void UnhandledExceptionEventHandler(object sender, UnhandledExceptionEventArgs e);
         public Form1()
         {
             InitializeComponent();
+            // Check for a internet connection
+            try
+            {
+                wc.DownloadData("http://archblox.com/client/version.txt");
+            }
+            catch
+            {
+                MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: HttpOpenRequest failed for GET http://archblox.com/client/version.txt, Error ID: 6", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
             ARCHBLOXProtocol.ARCHBLOXURIProtocol.Register();
             CreateShortcut();
             var lastword = "";
@@ -67,7 +75,7 @@ namespace ARCHBLOXLauncherGUI
                     }
                     if (info1 == "" || info2 == "")
                     {
-                        MessageBox.Show("Paramaters are invalid. Please try again. (ID: 500)", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Invalid Arguments, Error ID: 500", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.Exit(0);
                     }
                     var pProcess = new Process();
@@ -99,7 +107,7 @@ namespace ARCHBLOXLauncherGUI
                     }
                     if (info1 == "" || info2 == "")
                     {
-                        MessageBox.Show("Paramaters are invalid. Please try again. (ID: 500)", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Invalid Arguments, Error ID: 500", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.Exit(0);
                     }
                     var pProcess = new Process();
@@ -130,7 +138,6 @@ namespace ARCHBLOXLauncherGUI
                 // close program
                 Environment.Exit(0);
             }
-
             client = new DiscordRpcClient("996030605106090006");
             client.Initialize();
             client.SetPresence(new RichPresence()
@@ -166,7 +173,7 @@ namespace ARCHBLOXLauncherGUI
             }
             if (!System.IO.File.Exists(filePath))
             {
-                DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to host. Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult res =  MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Out of date client! To update the client, select Yes or select the Install button on the main menu.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (res == DialogResult.Yes)
                 {
                     ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
@@ -175,11 +182,11 @@ namespace ARCHBLOXLauncherGUI
             }
             else if (textBox1.Text == "" || textBox2.Text == "")
             {
-                MessageBox.Show("Please fill in all of the text fields.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill in all of the text boxes.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (rbxl == false)
             {
-                MessageBox.Show("Please use a valid .RBXL! ." + sWord + " is not a supported file format.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Invalid .RBXL, " + sWord + " is not a supported file format.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -247,7 +254,7 @@ namespace ARCHBLOXLauncherGUI
             // joining
             if (!System.IO.File.Exists(filePath))
             {
-                DialogResult res = MessageBox.Show("You need to install the latest version of ARCHBLOX to join " + serverip.Text + ":" + serverport.Text + ". Would you like to install it?", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult res = MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Out of date client! To update the client, select Yes or select the Install button on the main menu.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (res == DialogResult.Yes)
                 {
                     ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
@@ -256,7 +263,7 @@ namespace ARCHBLOXLauncherGUI
             }
             else if (serverip.Text == "" || serverport.Text == "")
             {
-                MessageBox.Show("Please fill in all of the text fields.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill in all of the text boxes.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -324,7 +331,7 @@ namespace ARCHBLOXLauncherGUI
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Choose a RBXL...";
             dialog.AddExtension = true;
-            dialog.Filter = "Place File (*.rbxl)| *.rbxl";
+            dialog.Filter = "ROBLOX Place File (*.rbxl)| *.rbxl";
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 // check if it is a rbxl
@@ -339,7 +346,7 @@ namespace ARCHBLOXLauncherGUI
                         if (line.Contains("<roblox!"))
                         {
                             // is binary/unsupported format
-                            MessageBox.Show("Sorry, binary .RBXL files are not supported. Please convert the RBXL into XML format using a converter, then try again.", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Binary ROBLOX Place files are not supported. Did you convert the place correctly, or use ARCHBLOX Studio to create the game?", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         else
@@ -355,13 +362,13 @@ namespace ARCHBLOXLauncherGUI
                 else if (word == ".rbxlx")
                 {
                     // rbxlx, cringe!
-                    MessageBox.Show(".RBXLX file formats are not supported, are you sure you converted the .RBXL correctly?", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(".RBXLX place files are not supported! Are you sure you converted the place correctly?", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
                     // wtf this isn't even a place
-                    MessageBox.Show(word.ToUpper() + " is not a supported file type!", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(word.ToUpper() + " is not a supported place file!", "ARCHBLOX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -378,7 +385,14 @@ namespace ARCHBLOXLauncherGUI
         private void UpdateBTN_Click(object sender, EventArgs e)
         {
             ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
-            form2.Show();
+            try
+            {
+                form2.Show();
+            }
+            catch
+            {
+                form2.Dispose();
+            }
         }
 
         private void BackBTN_Click(object sender, EventArgs e)

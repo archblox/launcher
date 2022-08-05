@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace ARCHBLOXLauncherGUI
 {
