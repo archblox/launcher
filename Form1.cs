@@ -59,9 +59,21 @@ namespace ARCHBLOXLauncherGUI
             {
                 if (lastword == "host")
                 {
+                    if (!System.IO.File.Exists(filePath))
+                    {
+                        DialogResult res = MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Out of date client! To update the client, select Yes.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        if (res == DialogResult.Yes)
+                        {
+                            ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
+                            form2.Show();
+                        } else
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
                     exitafterarg = true;
                     lastword = "stop";
-                    string[] info = word.Split('|');
+                    string[] info = word.Split(':');
                     foreach (var word2 in info)
                     {
                         if (info1 == "")
@@ -91,9 +103,22 @@ namespace ARCHBLOXLauncherGUI
                 }
                 if (lastword == "join")
                 {
+                    if (!System.IO.File.Exists(filePath))
+                    {
+                        DialogResult res = MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Out of date client! To update the client, select Yes.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        if (res == DialogResult.Yes)
+                        {
+                            ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
+                            form2.Show();
+                        }
+                        else
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
                     exitafterarg = true;
                     lastword = "stop";
-                    string[] info = word.Split('|');
+                    string[] info = word.Split(':');
                     foreach (var word2 in info)
                     {
                         if (info1 == "")
