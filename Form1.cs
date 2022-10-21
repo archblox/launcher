@@ -17,7 +17,7 @@ namespace ARCHBLOXLauncherGUI
             WshShell shell = new WshShell();
             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\ARCHBLOX Launcher.lnk";
             IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-            shortcut.Description = "The launcher for ARCHBLOX Player.";
+            shortcut.Description = "ARCHBLOX Player";
             shortcut.TargetPath = ARCHBLOXLauncherGUI.Extensions.GetExecutablePath();
             shortcut.Save();
         }
@@ -61,7 +61,7 @@ namespace ARCHBLOXLauncherGUI
                 {
                     if (!System.IO.File.Exists(filePath))
                     {
-                        DialogResult res = MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Out of date client! To update the client, select Yes.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        DialogResult res = MessageBox.Show("An error occoured while starting ARCHBLOX\n\nDetails: Out of date client! To update the client select Yes.", "ARCHBLOX", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                         if (res == DialogResult.Yes)
                         {
                             ARCHBLOXLauncherGUI.Form2 form2 = new ARCHBLOXLauncherGUI.Form2();
@@ -215,6 +215,28 @@ namespace ARCHBLOXLauncherGUI
             }
             else
             {
+                // Check if RADMIN VPN ip address to protect port forwarders from exposing their ip address and potentionally causing the server hoster to be doxxed/ddossed
+                string phrase2 = serverip.Text;
+                string[] words2 = phrase2.Split('.');
+                string sWord2 = "";
+                bool radmin = false;
+                foreach (var word in words2)
+                {
+                    sWord2 = word.ToLower();
+                    if (sWord2 == "26" || sWord2 == "localhost" || sWord2 == "192" || sWord2 == "10" || sWord2 == "127")
+                    {
+                        radmin = true;
+                    }
+                    else
+                    {
+                        radmin = false;
+                    }
+                    break;
+                }
+                if (radmin == false)
+                {
+                    phrase2 = "[IP HIDDEN]"; // HAHAHA DUDE THESE DOXXERS AND DDOSSERS ARE SO FUCKING FUNNY THEY MAKE ME WANT TO MERGE WITHOUT LOOKING!!!! 
+                }
                 void ProcessExitHandler(object sender, EventArgs args)
                 {
                     hosting = false;
@@ -223,7 +245,7 @@ namespace ARCHBLOXLauncherGUI
                         client.SetPresence(new DiscordRPC.RichPresence()
                         {
                             Details = "Playing a Game",
-                            State = "on " + serverip.Text + ":" + serverport.Text,
+                            State = "on " + phrase2 + ":" + serverport.Text,
                             Timestamps = Timestamps.Now,
                             Assets = new Assets()
                             {
@@ -335,10 +357,34 @@ namespace ARCHBLOXLauncherGUI
                 pProcess.Start();
                 pProcess.EnableRaisingEvents = true;
                 pProcess.Exited += new EventHandler(ProcessExitHandler);
+
+                // Check if RADMIN VPN ip address to protect port forwarders from exposing their ip address and potentionally causing the server hoster to be doxxed/ddossed
+                string phrase2 = serverip.Text;
+                string[] words2 = phrase2.Split('.');
+                string sWord2 = "";
+                bool radmin = false;
+                foreach (var word in words2)
+                {
+                    sWord2 = word.ToLower();
+                    if (sWord2 == "26" || sWord2 == "localhost" || sWord2 == "192" || sWord2 == "10" || sWord2 == "127")
+                    {
+                        radmin = true;
+                    }
+                    else
+                    {
+                        radmin = false;
+                    }
+                    break;
+                }
+                if (radmin == false)
+                {
+                    phrase2 = "[IP HIDDEN]"; // HAHAHA DUDE THESE DOXXERS AND DDOSSERS ARE SO FUCKING FUNNY THEY MAKE ME WANT TO MERGE WITHOUT LOOKING!!!! 
+                }
+
                 client.SetPresence(new DiscordRPC.RichPresence()
                 {
                     Details = "Playing a Game",
-                    State = "on " + serverip.Text + ":" + serverport.Text,
+                    State = "on " + phrase2 + ":" + serverport.Text,
                     Timestamps = Timestamps.Now,
                     Assets = new Assets()
                     {
